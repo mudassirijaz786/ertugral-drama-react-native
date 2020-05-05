@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "Ertugral Ghazi in Urdu",
+    "slug": "ErtugralGhazi",
+    "privacy": "public",
+    "sdkVersion": "36.0.0",
+    "platforms": ["ios", "android", "web"],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "android": {
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-3940256099942544~3347511713"
+      },
+      "package": "com.gameio.ertugralghaziinurdu"
+    },
+    "ios": {
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-3940256099942544~1458002511"
+      },
+      "supportsTablet": true
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
+  },
+  "displayName": "y",
+  "name": "com.game.io.ertugral.ghazi.in.urdu"
+}
