@@ -1,4 +1,8 @@
+//import
 import React, { Component } from "react";
+import { Card } from "react-native-elements";
+import { StyleSheet } from "react-native";
+import { AdMobBanner } from "expo-ads-admob";
 import {
   FlatList,
   View,
@@ -7,14 +11,13 @@ import {
   ImageBackground,
   Button,
 } from "react-native";
-import { Card } from "react-native-elements";
-import { StyleSheet } from "react-native";
-import { AdMobBanner } from "expo-ads-admob";
+//class
 class Episodes extends Component {
   constructor(props) {
     super(props);
   }
 
+  //screen header
   static navigationOptions = {
     title: "Episodes",
     headerStyle: { backgroundColor: "#9d08a1" },
@@ -22,10 +25,12 @@ class Episodes extends Component {
     headerTitleStyle: { color: "#fff" },
   };
 
+  //event to Play screen
   onPress(item) {
     this.props.navigation.navigate("Play", { url: item.image });
   }
 
+  //rendering episodes
   renderItem = ({ item, index }) => {
     return (
       <View style={{ flex: 1, justifyContent: "center", marginLeft: 5 }}>
@@ -33,7 +38,7 @@ class Episodes extends Component {
           containerStyle={{
             elevation: 0,
           }}
-          key={item.id}
+          key={index}
         >
           <Text style={{ marginBottom: 10, textAlign: "center" }}>
             Episode # {item.episode}
@@ -52,9 +57,9 @@ class Episodes extends Component {
     );
   };
 
+  //rendering
   render() {
     const season = this.props.navigation.getParam("season");
-    console.log("episode of clicked season", season);
     return (
       <ImageBackground
         blurRadius={1}
@@ -83,12 +88,14 @@ class Episodes extends Component {
           >
             Total {season.length} Episodes
           </Text>
+
           <FlatList
             data={season}
             renderItem={this.renderItem}
             keyExtractor={(item, index) => index.toString()}
           />
         </View>
+
         <AdMobBanner
           style={styles.ad}
           bannerSize="smartBannerPortrait"
@@ -101,6 +108,7 @@ class Episodes extends Component {
   }
 }
 
+//styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -115,4 +123,5 @@ const styles = StyleSheet.create({
   },
 });
 
+//exporting class
 export default Episodes;

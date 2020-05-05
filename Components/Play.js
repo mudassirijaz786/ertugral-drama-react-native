@@ -1,14 +1,17 @@
+//import
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Dimensions } from "react-native";
-import * as FileSystem from "expo-file-system";
-
 import { AdMobBanner, AdMobInterstitial } from "expo-ads-admob";
-const { width, height } = Dimensions.get("screen");
 import { WebView } from "react-native-webview";
 
-export default function SingleEpisode({ navigation }) {
+//screen dimentions
+const { width, height } = Dimensions.get("screen");
+
+//function
+export default function Play({ navigation }) {
   const [videoUrl] = useState(navigation.getParam("url"));
 
+  //AdMobInterstitial
   useEffect(() => {
     async function fetchAd() {
       await AdMobInterstitial.setAdUnitID(
@@ -20,6 +23,7 @@ export default function SingleEpisode({ navigation }) {
     fetchAd;
   }, []);
 
+  //rendering
   return (
     <View style={{ flex: 1 }}>
       <AdMobBanner
@@ -28,6 +32,7 @@ export default function SingleEpisode({ navigation }) {
         adUnitID="ca-app-pub-3940256099942544/6300978111"
         servePersonalizedAds={true}
       />
+
       <WebView
         javaScriptEnabled={true}
         domStorageEnabled={true}
@@ -37,6 +42,7 @@ export default function SingleEpisode({ navigation }) {
   );
 }
 
+//styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,

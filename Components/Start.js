@@ -1,15 +1,20 @@
+//import
 import React, { Component } from "react";
 import { Text, View, StyleSheet, ImageBackground, Linking } from "react-native";
 import { Button } from "react-native-elements";
 import { AdMobBanner } from "expo-ads-admob";
 
+//class
 export default class Main extends Component {
+  //header
   static navigationOptions = {
     title: "Ertugral",
     headerStyle: { backgroundColor: "#9d08a1" },
     headerTintColor: "#fff",
     headerTitleStyle: { color: "#fff" },
   };
+
+  //rendering
   render() {
     return (
       <ImageBackground
@@ -53,6 +58,8 @@ export default class Main extends Component {
     );
   }
 }
+
+//styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,

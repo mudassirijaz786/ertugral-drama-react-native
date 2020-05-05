@@ -1,4 +1,9 @@
+//importing
 import React, { Component } from "react";
+import { AdMobBanner, AdMobInterstitial } from "expo-ads-admob";
+import Axios from "axios";
+import { Card } from "react-native-elements";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import {
   StyleSheet,
   Text,
@@ -7,11 +12,8 @@ import {
   FlatList,
   ImageBackground,
 } from "react-native";
-import { AdMobBanner, AdMobInterstitial } from "expo-ads-admob";
-import Axios from "axios";
-import { Card } from "react-native-elements";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
+//class
 export default class Seasons extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +23,7 @@ export default class Seasons extends Component {
     };
   }
 
+  //header
   static navigationOptions = {
     title: "Seasons",
     headerStyle: { backgroundColor: "#9d08a1" },
@@ -28,10 +31,12 @@ export default class Seasons extends Component {
     headerTitleStyle: { color: "#fff" },
   };
 
+  //event to Episode screen
   onPress(item) {
     this.props.navigation.navigate("Episodes", { season: item.data });
   }
 
+  //AdMobInterstitial
   async componentDidMount() {
     this.loadData();
     await AdMobInterstitial.setAdUnitID(
@@ -41,6 +46,7 @@ export default class Seasons extends Component {
     await AdMobInterstitial.showAdAsync();
   }
 
+  //loading data from backend
   loadData = async () => {
     await Axios({
       url: "https://games-io-8cf9b.firebaseio.com/Seasons%20.json",
@@ -58,6 +64,7 @@ export default class Seasons extends Component {
       .catch((error) => {});
   };
 
+  //rendering Seasons
   renderItem = ({ item }) => {
     return (
       <View style={{ flex: 1, justifyContent: "center", marginLeft: 5 }}>
@@ -88,8 +95,8 @@ export default class Seasons extends Component {
     );
   };
 
+  //rendering
   render() {
-    console.log("state", this.state.seasons);
     return (
       <ImageBackground
         blurRadius={1}
@@ -134,6 +141,8 @@ export default class Seasons extends Component {
     );
   }
 }
+
+//styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,
